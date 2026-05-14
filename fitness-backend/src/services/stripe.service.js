@@ -1,21 +1,31 @@
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const COMMISSION_RATE = 0.25;
+
 export const calculateFees = (sessionPrice) => {
-  const COMMISSION_RATE = 0.25; // 25% comission (includes Stripe fees)
-  const platformFee = sessionPrice * COMMISSION_RATE;
-  const trainerPayout = sessionPrice - platformFee;
+  const platformFee = +(sessionPrice * COMMISSION_RATE).toFixed(2);
+  const trainerPayout = +(sessionPrice - platformFee).toFixed(2);
+  return { sessionPrice, platformFee, trainerPayout };
+};
+
+export const createPaymentIntent = async (amountEur, sessionId) => {
+  const amountCents = Math.round(amountEur * 100);
+
+  const intent = await stripe.paymentIntents.create({
+    amount: amountCents,
+    currency: 'eur',
+    metadata: { sessionId: sessionId.toString() },
+    automatic_payment_methods: { enabled: true },
+  });
 
   return {
-    sessionPrice,
-    platformFee,
-    trainerPayout
+    clientSecret: intent.client_secret,
+    paymentIntentId: intent.id,
+    amount: amountEur,
   };
 };
 
-// In the future, here goes Stripe integration (Payment Intents, Webhooks)
-export const createPaymentIntent = async (amount, currency = 'eur') => {
-  // Mock function for now
-  return {
-    clientSecret: 'mock_client_secret',
-    amount,
-    currency
-  };
-};
+export const constructWebhookEvent = (payload, signature) =>
+  stripe.webhooks.constructEvent(payload, signature, process.env.STRIPE_WEBHOOK_SECRET);
