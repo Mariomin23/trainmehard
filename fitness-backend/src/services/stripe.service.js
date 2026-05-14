@@ -1,6 +1,8 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripeKey = process.env.STRIPE_SECRET_KEY;
+const stripeEnabled = stripeKey && !stripeKey.includes('your_stripe_key');
+const stripe = stripeEnabled ? new Stripe(stripeKey) : null;
 
 const COMMISSION_RATE = 0.25;
 
@@ -11,6 +13,7 @@ export const calculateFees = (sessionPrice) => {
 };
 
 export const createPaymentIntent = async (amountEur, sessionId) => {
+  if (!stripeEnabled) throw new Error('Stripe not configured. Set STRIPE_SECRET_KEY in .env');
   const amountCents = Math.round(amountEur * 100);
 
   const intent = await stripe.paymentIntents.create({
@@ -27,5 +30,7 @@ export const createPaymentIntent = async (amountEur, sessionId) => {
   };
 };
 
-export const constructWebhookEvent = (payload, signature) =>
-  stripe.webhooks.constructEvent(payload, signature, process.env.STRIPE_WEBHOOK_SECRET);
+export const constructWebhookEvent = (payload, signature) => {
+  if (!stripeEnabled) throw new Error('Stripe not configured. Set STRIPE_SECRET_KEY in .env');
+  return stripe.webhooks.constructEvent(payload, signature, process.env.STRIPE_WEBHOOK_SECRET);
+};
