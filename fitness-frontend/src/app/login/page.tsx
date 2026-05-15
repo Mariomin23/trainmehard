@@ -30,19 +30,23 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex-1 flex items-center justify-center px-4 py-16 bg-gray-50">
+    <main className="flex-1 flex items-center justify-center px-4 py-16 bg-gray-950">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Bienvenido de nuevo</h1>
+        <Link href="/" className="block text-center text-2xl font-black tracking-tight mb-8">
+          <span className="text-white">TrainMe</span><span className="text-green-500">Hard</span>
+        </Link>
+
+        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8">
+          <h1 className="text-2xl font-bold text-gray-900 mb-1">Bienvenido de nuevo</h1>
           <p className="text-gray-500 text-sm mb-8">Inicia sesión en tu cuenta</p>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-600">
+            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-sm text-red-600">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
               <input
@@ -50,7 +54,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900 bg-gray-50 focus:bg-white"
                 placeholder="tu@email.com"
               />
             </div>
@@ -61,7 +65,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900 bg-gray-50 focus:bg-white"
                 placeholder="••••••••"
               />
             </div>
@@ -69,7 +73,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 mt-2"
+              className="w-full py-3.5 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors disabled:opacity-50 mt-1"
             >
               {loading ? 'Entrando...' : 'Iniciar sesión'}
             </button>
@@ -77,7 +81,7 @@ export default function LoginPage() {
 
           <p className="text-center text-sm text-gray-500 mt-6">
             ¿No tienes cuenta?{' '}
-            <Link href="/register" className="text-green-600 font-medium hover:underline">
+            <Link href="/register" className="text-green-600 font-semibold hover:text-green-500 transition-colors">
               Regístrate gratis
             </Link>
           </p>

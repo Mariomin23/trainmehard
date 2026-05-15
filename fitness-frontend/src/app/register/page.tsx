@@ -32,19 +32,23 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="flex-1 flex items-center justify-center px-4 py-16 bg-gray-50">
+    <main className="flex-1 flex items-center justify-center px-4 py-16 bg-gray-950">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Crea tu cuenta</h1>
+        <Link href="/" className="block text-center text-2xl font-black tracking-tight mb-8">
+          <span className="text-white">TrainMe</span><span className="text-green-500">Hard</span>
+        </Link>
+
+        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8">
+          <h1 className="text-2xl font-bold text-gray-900 mb-1">Crea tu cuenta</h1>
           <p className="text-gray-500 text-sm mb-8">Gratis. Sin suscripciones.</p>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-2xl text-sm text-red-600">
+            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-sm text-red-600">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Nombre completo</label>
               <input
@@ -52,7 +56,7 @@ export default function RegisterPage() {
                 value={form.name}
                 onChange={set('name')}
                 required
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900 bg-gray-50 focus:bg-white"
                 placeholder="Tu nombre"
               />
             </div>
@@ -63,7 +67,7 @@ export default function RegisterPage() {
                 value={form.email}
                 onChange={set('email')}
                 required
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900 bg-gray-50 focus:bg-white"
                 placeholder="tu@email.com"
               />
             </div>
@@ -75,25 +79,25 @@ export default function RegisterPage() {
                 onChange={set('password')}
                 required
                 minLength={8}
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900 bg-gray-50 focus:bg-white"
                 placeholder="Mínimo 8 caracteres"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Soy...</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Soy...</label>
               <div className="grid grid-cols-2 gap-3">
                 {(['USER', 'TRAINER'] as const).map(r => (
                   <button
                     key={r}
                     type="button"
                     onClick={() => setForm(f => ({ ...f, role: r }))}
-                    className={`py-3 rounded-xl border text-sm font-medium transition-all ${
+                    className={`py-3 rounded-xl border text-sm font-semibold transition-all ${
                       form.role === r
-                        ? 'border-green-600 bg-green-50 text-green-700'
-                        : 'border-gray-200 text-gray-600 hover:border-gray-300'
+                        ? 'border-green-500 bg-green-50 text-green-700 shadow-sm'
+                        : 'border-gray-200 text-gray-600 hover:border-gray-300 bg-white'
                     }`}
                   >
-                    {r === 'USER' ? 'Busco entrenador' : 'Soy entrenador'}
+                    {r === 'USER' ? '🏋️ Busco entrenador' : '💼 Soy entrenador'}
                   </button>
                 ))}
               </div>
@@ -102,7 +106,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 mt-2"
+              className="w-full py-3.5 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors disabled:opacity-50 mt-1"
             >
               {loading ? 'Creando cuenta...' : 'Crear cuenta'}
             </button>
@@ -110,7 +114,7 @@ export default function RegisterPage() {
 
           <p className="text-center text-sm text-gray-500 mt-6">
             ¿Ya tienes cuenta?{' '}
-            <Link href="/login" className="text-green-600 font-medium hover:underline">
+            <Link href="/login" className="text-green-600 font-semibold hover:text-green-500 transition-colors">
               Inicia sesión
             </Link>
           </p>
