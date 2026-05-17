@@ -4,7 +4,7 @@ const stripeKey = process.env.STRIPE_SECRET_KEY;
 const stripeEnabled = stripeKey && !stripeKey.includes('your_stripe_key');
 const stripe = stripeEnabled ? new Stripe(stripeKey) : null;
 
-const COMMISSION_RATE = 0.25;
+const COMMISSION_RATE = 0.50;
 
 export const calculateFees = (sessionPrice) => {
   const platformFee = +(sessionPrice * COMMISSION_RATE).toFixed(2);

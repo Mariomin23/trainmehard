@@ -49,7 +49,7 @@ export default function TrainerCard({ trainer }: { trainer: Trainer }) {
       </div>
 
       <Link
-        href={`/trainers/${trainer._id}`}
+        href={`/professionals/${trainer._id}`}
         className="w-full text-center py-3 bg-green-500 text-white rounded-xl text-sm font-semibold hover:bg-green-400 transition-colors mt-auto"
       >
         Ver perfil

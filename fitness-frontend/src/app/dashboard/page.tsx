@@ -28,7 +28,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!user) return;
-    if (user.role === 'TRAINER') { router.push('/dashboard/trainer'); return; }
+    if (user.role === 'PROFESSIONAL') { router.push('/dashboard/professional'); return; }
     getMySessions()
       .then(setSessions)
       .finally(() => setLoading(false));
@@ -46,8 +46,8 @@ export default function DashboardPage() {
               <h1 className="text-2xl font-bold text-gray-900">Mis sesiones</h1>
               <p className="text-gray-500 text-sm mt-1">Hola, {user?.name?.split(' ')[0]}</p>
             </div>
-            <Link href="/trainers" className="px-5 py-2.5 bg-green-600 text-white rounded-full text-sm font-medium hover:bg-green-700 transition-colors">
-              Buscar entrenador
+            <Link href="/professionals" className="px-5 py-2.5 bg-green-600 text-white rounded-full text-sm font-medium hover:bg-green-700 transition-colors">
+              Buscar profesional
             </Link>
           </div>
 
@@ -59,9 +59,9 @@ export default function DashboardPage() {
             <div className="text-center py-20 bg-white rounded-3xl border border-gray-100">
               <CalendarDays size={40} className="mx-auto text-gray-300 mb-4" />
               <p className="font-semibold text-gray-700">Sin sesiones todavía</p>
-              <p className="text-sm text-gray-400 mt-1 mb-6">Reserva tu primera sesión con un entrenador</p>
-              <Link href="/trainers" className="px-6 py-2.5 bg-green-600 text-white rounded-full text-sm font-medium hover:bg-green-700 transition-colors">
-                Explorar entrenadores
+              <p className="text-sm text-gray-400 mt-1 mb-6">Reserva tu primera sesión con un profesional</p>
+              <Link href="/professionals" className="px-6 py-2.5 bg-green-600 text-white rounded-full text-sm font-medium hover:bg-green-700 transition-colors">
+                Explorar profesionales
               </Link>
             </div>
           ) : (

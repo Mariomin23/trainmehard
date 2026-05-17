@@ -9,8 +9,8 @@ export default function Hero() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) router.push(`/trainers?specialty=${encodeURIComponent(query.trim())}`);
-    else router.push('/trainers');
+    if (query.trim()) router.push(`/professionals?specialty=${encodeURIComponent(query.trim())}`);
+    else router.push('/professionals');
   };
 
   return (
@@ -23,7 +23,7 @@ export default function Hero() {
         {/* Social proof badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-sm font-medium mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          Más de 200 entrenadores certificados
+          Más de 200 profesionales certificados
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
@@ -31,7 +31,7 @@ export default function Hero() {
           <span className="text-green-400">empieza aquí</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Conecta con entrenadores personales certificados. Busca, compara y reserva en minutos.
+          Conecta con entrenadores, nutricionistas y fisioterapeutas certificados. Busca, compara y reserva en minutos.
         </p>
 
         <form
@@ -44,7 +44,7 @@ export default function Hero() {
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="Ej: Crossfit, Yoga, Pérdida de peso..."
+              placeholder="Ej: Crossfit, Dieta Keto, Rehabilitación..."
               className="w-full py-3 outline-none text-gray-700 bg-transparent placeholder:text-gray-400"
             />
           </div>
@@ -57,7 +57,7 @@ export default function Hero() {
         </form>
 
         <div className="mt-10 flex items-center justify-center gap-8 text-sm text-gray-500 flex-wrap">
-          {['Entrenadores certificados', 'Sin suscripción', 'Pago seguro'].map(t => (
+          {['Profesionales certificados', 'Sin suscripción', 'Pago seguro'].map(t => (
             <div key={t} className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
               {t}

@@ -1,9 +1,9 @@
 1. Visión General & Modelo de Negocio
-Proyecto: Marketplace "One-Shot" para Entrenadores Fitness.
+Proyecto: Marketplace "One-Shot" para Entrenadores Fitness. El proyecto tambien incluira una seccion para nutricionistas que quieran ofrecer sus servicios y una seccion para fisioterapeutas que quieran ofrecer sus servicios.
 
 Modelo: El usuario busca gratis. Paga una "Sesión Inicial" para desbloquear al entrenador.
 
-Monetización: 25% de comisión (incluyendo fees de Stripe).
+Monetización: 50% de comisión (incluyendo fees de Stripe).
 
 Referencia UX: TaskRabbit (Minimalismo, búsqueda potente, tarjetas claras).
 

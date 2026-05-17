@@ -6,7 +6,7 @@ import { useAuthStore } from '@/store/auth.store';
 import { register } from '@/services/auth.service';
 
 export default function RegisterPage() {
-  const [form, setForm] = useState({ name: '', email: '', password: '', role: 'USER' as 'USER' | 'TRAINER' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', role: 'USER' as 'USER' | 'PROFESSIONAL' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { setAuth } = useAuthStore();
@@ -22,7 +22,7 @@ export default function RegisterPage() {
     try {
       const data = await register(form.name, form.email, form.password, form.role);
       setAuth(data.token, data.user);
-      router.push(data.user.role === 'TRAINER' ? '/dashboard/trainer' : '/dashboard');
+      router.push(data.user.role === 'PROFESSIONAL' ? '/dashboard/professional' : '/dashboard');
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { message?: string } } })?.response?.data?.message;
       setError(msg || 'Error al registrarse');
@@ -86,7 +86,7 @@ export default function RegisterPage() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Soy...</label>
               <div className="grid grid-cols-2 gap-3">
-                {(['USER', 'TRAINER'] as const).map(r => (
+                {(['USER', 'PROFESSIONAL'] as const).map(r => (
                   <button
                     key={r}
                     type="button"
@@ -97,7 +97,7 @@ export default function RegisterPage() {
                         : 'border-gray-200 text-gray-600 hover:border-gray-300 bg-white'
                     }`}
                   >
-                    {r === 'USER' ? '🏋️ Busco entrenador' : '💼 Soy entrenador'}
+                    {r === 'USER' ? '🏋️ Busco profesional' : '💼 Soy profesional'}
                   </button>
                 ))}
               </div>

@@ -11,6 +11,7 @@ const SPECIALTIES = [
   { name: 'Pilates', icon: '🤸' },
   { name: 'Boxeo', icon: '🥊' },
   { name: 'Nutrición', icon: '🥗' },
+  { name: 'Fisioterapia', icon: '🩺' },
 ];
 
 const STEPS = [
@@ -20,7 +21,7 @@ const STEPS = [
 ];
 
 const STATS = [
-  { value: '200+', label: 'Entrenadores' },
+  { value: '200+', label: 'Profesionales' },
   { value: '4.9★', label: 'Valoración media' },
   { value: '1.200+', label: 'Sesiones completadas' },
 ];
@@ -76,7 +77,7 @@ export default function Home() {
             {SPECIALTIES.map(({ name, icon }) => (
               <Link
                 key={name}
-                href={`/trainers?specialty=${encodeURIComponent(name)}`}
+                href={`/professionals?specialty=${encodeURIComponent(name)}`}
                 className="bg-white rounded-2xl p-5 flex flex-col items-center gap-3 hover:shadow-md hover:-translate-y-0.5 border border-gray-100 transition-all duration-200 group"
               >
                 <span className="text-3xl">{icon}</span>
@@ -108,10 +109,10 @@ export default function Home() {
               Empezar gratis
             </Link>
             <Link
-              href="/trainers"
+              href="/professionals"
               className="inline-block px-8 py-3.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors"
             >
-              Ver entrenadores
+              Ver profesionales
             </Link>
           </div>
         </div>

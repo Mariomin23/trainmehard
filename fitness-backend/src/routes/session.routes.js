@@ -12,6 +12,6 @@ router.use(authenticate);
 router.get('/', getMySessions);
 router.get('/:id', getById);
 router.post('/', authorize('USER'), validate(createSessionSchema), create);
-router.patch('/:id/status', authorize('TRAINER', 'ADMIN'), updateStatus);
+router.patch('/:id/status', authorize('PROFESSIONAL', 'ADMIN'), updateStatus);
 
 export default router;

@@ -3,7 +3,7 @@ import api from './api';
 export const login = (email: string, password: string) =>
   api.post('/auth/login', { email, password }).then(r => r.data.data);
 
-export const register = (name: string, email: string, password: string, role: 'USER' | 'TRAINER') =>
+export const register = (name: string, email: string, password: string, role: 'USER' | 'PROFESSIONAL') =>
   api.post('/auth/register', { name, email, password, role }).then(r => r.data.data);
 
 export const getMe = () =>

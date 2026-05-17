@@ -28,14 +28,14 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-          <Link href="/trainers" className="hover:text-green-600 transition-colors">
-            Encontrar Entrenador
+          <Link href="/professionals" className="hover:text-green-600 transition-colors">
+            Encontrar Profesional
           </Link>
 
           {user ? (
             <>
               <Link
-                href={user.role === 'TRAINER' ? '/dashboard/trainer' : '/dashboard'}
+                href={user.role === 'PROFESSIONAL' ? '/dashboard/professional' : '/dashboard'}
                 className="flex items-center gap-1.5 hover:text-green-600 transition-colors"
               >
                 <LayoutDashboard size={16} />
@@ -71,14 +71,14 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white px-6 py-4 flex flex-col gap-4 text-sm font-medium text-gray-600">
-          <Link href="/trainers" className="hover:text-green-600 transition-colors" onClick={closeMenu}>
-            Encontrar Entrenador
+          <Link href="/professionals" className="hover:text-green-600 transition-colors" onClick={closeMenu}>
+            Encontrar Profesional
           </Link>
 
           {user ? (
             <>
               <Link
-                href={user.role === 'TRAINER' ? '/dashboard/trainer' : '/dashboard'}
+                href={user.role === 'PROFESSIONAL' ? '/dashboard/professional' : '/dashboard'}
                 className="flex items-center gap-1.5 hover:text-green-600 transition-colors"
                 onClick={closeMenu}
               >

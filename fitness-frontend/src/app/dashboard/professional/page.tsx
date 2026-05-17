@@ -90,11 +90,11 @@ export default function TrainerDashboardPage() {
   ] as const;
 
   return (
-    <AuthGuard role="TRAINER">
+    <AuthGuard role="PROFESSIONAL">
       <main className="flex-1 bg-gray-50 py-8 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-gray-900">Panel de entrenador</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Panel de profesional</h1>
             <p className="text-gray-500 text-sm mt-1">Hola, {user?.name?.split(' ')[0]}</p>
           </div>
 

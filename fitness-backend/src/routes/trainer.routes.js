@@ -12,8 +12,8 @@ router.get('/', search);
 router.get('/:id', getById);
 
 // Trainer-only
-router.get('/me/profile', authenticate, authorize('TRAINER'), getMyProfile);
-router.put('/me/profile', authenticate, authorize('TRAINER'), validate(trainerProfileSchema), updateProfile);
-router.put('/me/availability', authenticate, authorize('TRAINER'), validate(availabilitySchema), updateAvailability);
+router.get('/me/profile', authenticate, authorize('PROFESSIONAL'), getMyProfile);
+router.put('/me/profile', authenticate, authorize('PROFESSIONAL'), validate(trainerProfileSchema), updateProfile);
+router.put('/me/availability', authenticate, authorize('PROFESSIONAL'), validate(availabilitySchema), updateAvailability);
 
 export default router;

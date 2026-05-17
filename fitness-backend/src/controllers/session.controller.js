@@ -10,7 +10,7 @@ export const create = async (req, res, next) => {
 
 export const getMySessions = async (req, res, next) => {
   try {
-    const data = req.user.role === 'TRAINER'
+    const data = req.user.role === 'PROFESSIONAL'
       ? await sessionService.getTrainerSessions(req.user.id)
       : await sessionService.getUserSessions(req.user.id);
     success(res, data);

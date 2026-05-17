@@ -5,7 +5,7 @@ import { useAuthStore } from '@/store/auth.store';
 
 interface Props {
   children: React.ReactNode;
-  role?: 'USER' | 'TRAINER' | 'ADMIN';
+  role?: 'USER' | 'PROFESSIONAL' | 'ADMIN';
 }
 
 export default function AuthGuard({ children, role }: Props) {

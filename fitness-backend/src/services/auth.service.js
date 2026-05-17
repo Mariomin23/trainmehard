@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
-import Trainer from '../models/Trainer.js';
+import Professional from '../models/Professional.js';
 import { generateToken } from '../utils/jwt.js';
 
 export const register = async ({ name, email, password, role }) => {
@@ -10,8 +10,8 @@ export const register = async ({ name, email, password, role }) => {
   const hashed = await bcrypt.hash(password, 12);
   const user = await User.create({ name, email, password: hashed, role });
 
-  if (role === 'TRAINER') {
-    await Trainer.create({ userId: user._id, hourlyRate: 0, specialties: [] });
+  if (role === 'PROFESSIONAL') {
+    await Professional.create({ userId: user._id, professionType: 'TRAINER', hourlyRate: 0, specialties: [] });
   }
 
   const token = generateToken({ id: user._id, role: user.role });

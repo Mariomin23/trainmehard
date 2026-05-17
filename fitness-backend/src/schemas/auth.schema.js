@@ -4,7 +4,7 @@ export const registerSchema = z.object({
   name: z.string().min(2).max(100),
   email: z.email(),
   password: z.string().min(8),
-  role: z.enum(['USER', 'TRAINER']).optional().default('USER'),
+  role: z.enum(['USER', 'PROFESSIONAL']).optional().default('USER'),
 });
 
 export const loginSchema = z.object({

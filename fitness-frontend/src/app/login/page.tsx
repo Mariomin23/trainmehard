@@ -20,7 +20,7 @@ export default function LoginPage() {
     try {
       const data = await login(email, password);
       setAuth(data.token, data.user);
-      router.push(data.user.role === 'TRAINER' ? '/dashboard/trainer' : '/dashboard');
+      router.push(data.user.role === 'PROFESSIONAL' ? '/dashboard/professional' : '/dashboard');
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { message?: string } } })?.response?.data?.message;
       setError(msg || 'Error al iniciar sesión');
